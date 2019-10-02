@@ -93,6 +93,8 @@ THE SOFTWARE.
 
 @angular/material/form-field
 
+@angular/material/tabs
+
 @angular/platform-browser
 MIT
 
