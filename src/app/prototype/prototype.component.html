@@ -1,38 +1,111 @@
 <div class="RGlayout">
   <h3>Search</h3>
-  <form class="example-form">
 
-    <mat-form-field class="example-full-width">
-      <input matInput placeholder="Keyword" [formControl]="keyWord">
-    </mat-form-field>
+  <mat-tab-group>
+    <mat-tab label="Scenarios 1 & 2">
 
-    <mat-form-field class="example-full-width">
-      <input type="text" placeholder="Location" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
-      <mat-autocomplete #auto="matAutocomplete">
-        <mat-option *ngFor="let option of filteredOptions" [value]="option.zipCode + ', ' + option.city + ', ' + option.stateFullName">
-          {{option.zipCode + ", " + option.city + ", " + option.stateFullName}}
-        </mat-option>
-      </mat-autocomplete>
-    </mat-form-field>
+      <p>
+        Scenario 1: user starts on ES site. <br> <br>
+        Scenario 2: user starts on external site and gets redirected to ES site.
 
-    <mat-form-field class="example-full-width">
-      <input matInput placeholder="UTM Source" [formControl]="utmSource">
-    </mat-form-field>
-
-    <mat-form-field class="example-full-width">
-      <input matInput placeholder="UTM Medium" [formControl]="utmMedium">
-    </mat-form-field>
-
-    <mat-form-field class="example-full-width">
-      <input matInput placeholder="HTTP Referer" [formControl]="httpReferer">
-    </mat-form-field>
+      </p>
+      <mat-divider></mat-divider>
+      <br>
+      <form class="example-form">
 
 
-  </form>
 
-  <div class="example-button-row">
-    <button mat-raised-button color="primary" (click)="gotToTesg(keyWord.value, myControl.value, utmSource.value, utmMedium.value, httpReferer.value)">Go</button>
-  </div>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Keyword" [formControl]="keyWord">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input type="text" placeholder="Location" aria-label="Number" matInput [formControl]="myControl"
+                 [matAutocomplete]="auto">
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let option of filteredOptions"
+                        [value]="zipCodeSearch? option.zipCode + ', ' + option.city + ', ' + option.stateFullName: (option.city?option.city + ', ' + option.stateFullName:option.stateFullName)">
+
+
+
+              {{zipCodeSearch? option.zipCode + ', ' + option.city + ', ' + option.stateFullName: (option.city?option.city + ', ' + option.stateFullName:option.stateFullName)}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="UTM Source" [formControl]="utmSource">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="UTM Medium" [formControl]="utmMedium">
+        </mat-form-field>
+
+
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="HTTP Referrer" [formControl]="httpReferer">
+        </mat-form-field>
+
+
+      </form>
+
+      <div class="example-button-row">
+        <button mat-raised-button color="primary"
+                (click)="gotToTesg(keyWord.value, myControl.value, utmSource.value, utmMedium.value, httpReferer.value, utmCampaign.value,'main', null)">
+          Go
+        </button>
+      </div>
+
+    </mat-tab>
+
+
+    <mat-tab label="Scenarios 3 & 4">
+      <p>
+        Scenario 3: user starts on microsite. <br> <br>
+        Scenario 4: user starts on external site and gets redirected to microsite.
+
+      </p>
+      <mat-divider></mat-divider>
+      <br>
+      <form class="example-form">
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="UTM Source" [formControl]="utmSource2">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="UTM Medium" [formControl]="utmMedium2">
+        </mat-form-field>
+
+
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="HTTP Referrer" [formControl]="httpReferer2">
+        </mat-form-field>
+
+
+        <mat-form-field class="example-full-width">
+          <input type="text" placeholder="Category" aria-label="Number" matInput [formControl]="categoryControl"
+                 [matAutocomplete]="auto2">
+          <mat-autocomplete #auto2="matAutocomplete">
+            <mat-option *ngFor="let option of categories"
+                        [value]="option.id">
+              {{option.id}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+
+      </form>
+      <div class="example-button-row">
+        <button mat-raised-button color="primary"
+                (click)="gotToTesg(null, null, utmSource2.value, utmMedium2.value, httpReferer2.value, utmCampaign2.value,'iframe', categoryControl.value)">
+          Go
+        </button>
+      </div>
+
+    </mat-tab>
+
+  </mat-tab-group>
+
+
 </div>
 
 

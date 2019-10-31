@@ -7,22 +7,28 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {PrototypeComponent} from './prototype/prototype.component';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
-import {MatFormFieldModule, MatInputModule, MatButtonModule} from '@angular/material';
+import {MatFormFieldModule, MatInputModule, MatButtonModule, MatTabsModule, MatCardModule, MatDividerModule, MatListModule} from '@angular/material';
 import {ReactiveFormsModule, FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
+import { ExecComponent } from './exec/exec.component';
 
 let angularMaterialModules = [
   MatGridListModule,
   MatAutocompleteModule,
   MatFormFieldModule,
   MatInputModule,
-  MatButtonModule
+  MatButtonModule,
+  MatTabsModule,
+  MatCardModule,
+  MatDividerModule,
+  MatListModule
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    PrototypeComponent
+    PrototypeComponent,
+    ExecComponent
   ],
   imports: [
     BrowserModule,
